@@ -2,8 +2,15 @@ import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
+import About from "./components/About";
 import Alert from "./components/Alert";
-
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  
+  
+} from "react-router-dom";
 
 
 function App() {
@@ -16,16 +23,16 @@ function App() {
       type: type,
     });
 
-    setTimeout(()=>{
+    setTimeout(() => {
       setAlert(null);
-      
-    },900);
+
+    }, 1200);
   }
 
-   
+
 
   const toggleMode = () => {
-    
+
 
     if (mode === "light") {
       setMode("dark");
@@ -42,10 +49,27 @@ function App() {
     <>
       <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
-      <div className="container">
-        <TextForm showAlert ={showAlert} heading="Enter the text to analyze below" mode={mode} />
-      </div>
+      <Router>
+        <div className="container my-3">
+
+          <Routes>
+            <Route path="/About" element={<About />}>
+              
+            </Route>
+
+            <Route path="/" element={<TextForm/>}>
+              {/* <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} /> */}
+            </Route>
+            </Routes>
+
+          
+        </div>
+
+
+      </Router>
     </>
+
+
   );
 }
 
