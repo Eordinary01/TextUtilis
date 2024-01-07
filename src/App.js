@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Link,
   
   
 } from "react-router-dom";
@@ -47,9 +48,9 @@ function App() {
 
   return (
     <>
+      <Router>
       <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
-      <Router>
         <div className="container my-3">
 
           <Routes>
@@ -57,8 +58,8 @@ function App() {
               
             </Route>
 
-            <Route path="/" element={<TextForm/>}>
-              {/* <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} /> */}
+            <Route path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />}>
+              
             </Route>
             </Routes>
 
